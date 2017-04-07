@@ -15,3 +15,6 @@ button:hover {
   margin: 0 auto;
 }
 
+.persisted{
+	text-decoration: line-through;
+}
