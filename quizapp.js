@@ -1,21 +1,34 @@
+//User choose response
+//correct/or incorrect alert
+//number of question correct
+//choose next question
 //Follow MCV model.
 //Model
 	//will contain variables inside the app.
 
 var state = {//single source of truth
 	items: [{
-		name: "Rosa Parks", 
+		name: "Rosa Parks:", 
 		warnings: [
-			"don't smile", 
+			"Don't smile", 
 			"don't buy milk", 
 			"don't sit on the white side of the bus", 
 			"don't march"
 		],
 		result:2
+	}, {
+		name: "Katherine Johnson:",
+		warnings:[
+			"Can't use the white bathroom",
+			"Can't become an engineer",
+			"Can't drive",
+			"Can't dance"
+		],
+		result: 2
 	}]
 }
 //Rendering
-//next two steps: 1)writing my html, 2) map it
+
 //will need to make the question number dynamic. 
 var renderList = function(state) {
 	var question = state.items[0]
@@ -26,14 +39,11 @@ var renderList = function(state) {
 
 		//update classes
 		return `
-			<li index="${index}"> 
-        		<span class="">${item}</span>
-        		<div class="shopping-item-controls">
-        			<button class="shopping-item-toggle">
-        				<span class="button-label">check</span>
-        			</button>
-        			<button class="shopping-item-delete">
-        				<span class="button-label">delete</span>
+			<li index = ${index}> 
+        		<span class="answers">${item}</span>
+        		<div class="quiz-item-controls">
+        			<button class="choice-item-toggle">
+        				<span class="button-label">my choice</span>
         			</button>
         		</div>
         	</li>
@@ -50,7 +60,16 @@ renderList(state)
 //set up event listeners 
 	//question/answer
 	//correct/incorrect response
-
+$("button").on("click", function provideAnswer(event){
+	var itemToCheck = $(event.currentTarget).closest("li").attr("index");
+	// if (2 == "2")
+	 if (state.items[0].result == itemToCheck) {
+	 	alert("correct")
+	 }
+	 else {
+	 	alert("wrong")
+	 }
+}); 
 
  
 //Pieces on info per questions:
