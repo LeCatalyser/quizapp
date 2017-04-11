@@ -6,7 +6,7 @@
 //Model
 	//will contain variables inside the app.
 
-var state = {//single source of truth
+var state = {//single source of truth/the braing of the operation 
 	items: [{
 		name: "Rosa Parks:", 
 		warnings: [
@@ -25,13 +25,14 @@ var state = {//single source of truth
 			"Can't dance"
 		],
 		result: 2
-	}]
+	}],
+	currentQuestion: 0, 
 }
 //Rendering
 
 //will need to make the question number dynamic. 
 var renderList = function(state) {
-	var question = state.items[0]
+	var question = state.items[state.currentQuestion]
 	var name = question.name
 	var warnings = question.warnings
 	//item is always singular and index referring to which element with in the array
@@ -49,7 +50,7 @@ var renderList = function(state) {
         	</li>
 	`
 	});
-
+//add info to render to keep track of question
 	var html = `
 		<div>${name},${itemsHtml.join("")}</div>
 	`
@@ -60,15 +61,17 @@ renderList(state)
 //set up event listeners 
 	//question/answer
 	//correct/incorrect response
-$("button").on("click", function provideAnswer(event){
+$("body").on("click", "button", function provideAnswer(event){
 	var itemToCheck = $(event.currentTarget).closest("li").attr("index");
 	// if (2 == "2")
-	 if (state.items[0].result == itemToCheck) {
+	 if (state.items[state.currentQuestion].result == itemToCheck) {
 	 	alert("correct")
 	 }
 	 else {
 	 	alert("wrong")
 	 }
+	 state.currentQuestion += 1
+	renderList(state)
 }); 
 
  
