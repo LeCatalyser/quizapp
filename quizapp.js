@@ -8,7 +8,7 @@
 
 var state = {//single source of truth/the braing of the operation 
 	items: [{
-		name: "Rosa Parks:", 
+		name: "Rosa Parks", 
 		warnings: [
 			"Don't smile", 
 			"don't buy milk", 
@@ -17,7 +17,7 @@ var state = {//single source of truth/the braing of the operation
 		],
 		result:2
 	}, {
-		name: "Katherine Johnson:",
+		name: "Katherine Johnson",
 		warnings:[
 			"Can't use the white bathroom",
 			"Can't become an engineer",
@@ -44,7 +44,7 @@ var renderList = function(state) {
         		<span class="answers">${item}</span>
         		<div class="quiz-item-controls">
         			<button class="choice-item-toggle">
-        				<span class="button-label">my choice</span>
+        				<span class="button-label">she persisted</span>
         			</button>
         		</div>
         	</li>
@@ -63,16 +63,21 @@ renderList(state)
 	//correct/incorrect response
 $("body").on("click", "button", function provideAnswer(event){
 	var itemToCheck = $(event.currentTarget).closest("li").attr("index");
-	// if (2 == "2")
-	 if (state.items[state.currentQuestion].result == itemToCheck) {
-	 	alert("correct")
-	 }
-	 else {
-	 	alert("wrong")
-	 }
-	 state.currentQuestion += 1
-	renderList(state)
+	console.log(itemToCheck);
+	//if (2 == "2")
+// 	 if (itemToCheck==="2" ) {
+// 	 	swal("she persisted", null, "success");
+// 	 }
+// 	 else {
+// 	 	swal("hmm, try again", null, "error");
+// 	 }
+// 	 state.currentQuestion += 1
+// 	renderList(state)
 }); 
+
+function checkAnswer(item,result) {
+
+}
 
  
 //Pieces on info per questions:

@@ -1,13 +1,18 @@
 *{
 	box-sizing: border-box;
+	background: #f7f7f7;
 }
 
 title{
-	font-family: 
+	
 }
 
 button:hover {
   cursor: pointer;
+}
+
+button {
+	color: #ff8c69;
 }
 
 .container {
@@ -15,6 +20,21 @@ button:hover {
   margin: 0 auto;
 }
 
+h1{
+font-family:'Fredericka the Great', cursive;
+font-size: 40px;
+
+}
+
 .persisted{
 	text-decoration: line-through;
+	font-family: 'Waiting for the Sunrise', cursive;
+	color: #cce0da;
+}
+li
+{
+	text-align: center;
+	list-style: none;
+	margin: 10px;
+	width: 400px;
 }
