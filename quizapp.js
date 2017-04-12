@@ -5,15 +5,18 @@
 //Follow MCV model.
 //Model
 	//will contain variables inside the app.
+function printQuestion(name) {
+	return name +  " was warned. She was given an explanation. Nevertheless she persisted by:"
+}
 
 var state = {//single source of truth/the braing of the operation 
 	items: [{
 		name: "Rosa Parks", 
 		warnings: [
-			"Don't smile", 
-			"don't buy milk", 
-			"don't sit on the white side of the bus", 
-			"don't march"
+			"Working", 
+			"Voting", 
+			"Refusing to give up her seat for a white man", 
+			"Marching"
 		],
 		result:2
 	}, {
@@ -24,8 +27,8 @@ var state = {//single source of truth/the braing of the operation
 			"Can't drive",
 			"Can't dance"
 		],
-		result: 2
-	}],
+		result: 1
+	}3],
 	currentQuestion: 0, 
 }
 //Rendering
@@ -44,7 +47,7 @@ var renderList = function(state) {
         		<span class="answers">${item}</span>
         		<div class="quiz-item-controls">
         			<button class="choice-item-toggle">
-        				<span class="button-label">she persisted</span>
+        				<span class="button-label">your choice </span>
         			</button>
         		</div>
         	</li>
@@ -52,7 +55,7 @@ var renderList = function(state) {
 	});
 //add info to render to keep track of question
 	var html = `
-		<div>${name},${itemsHtml.join("")}</div>
+		<div>${printQuestion(name)}${itemsHtml.join("")}</div>
 	`
 	$('.questions').html(html);
 }
@@ -61,23 +64,32 @@ renderList(state)
 //set up event listeners 
 	//question/answer
 	//correct/incorrect response
-$("body").on("click", "button", function provideAnswer(event){
+$("body").on("click", "button.choice-item-toggle", function provideAnswer(event){
 	var itemToCheck = $(event.currentTarget).closest("li").attr("index");
-	console.log(itemToCheck);
+	console.log(itemToCheck)
+	//checkAnswer(itemToCheck,2 )
+
 	//if (2 == "2")
-// 	 if (itemToCheck==="2" ) {
-// 	 	swal("she persisted", null, "success");
-// 	 }
-// 	 else {
-// 	 	swal("hmm, try again", null, "error");
-// 	 }
-// 	 state.currentQuestion += 1
-// 	renderList(state)
+	 if (state.items[state.currentQuestion].result == itemToCheck) {
+	 	swal("She persisted!", null, "success");
+	 }
+	 else {
+	 	swal("hmm, try again", null, "error");
+	 }
+	 state.currentQuestion += 1
+	renderList(state)
 }); 
 
-function checkAnswer(item,result) {
-
-}
+// function checkAnswer(itemToCheck,result) {
+// 	console.log(itemToCheck)
+// 	if (itemToCheck === result) {
+// 		counter++;
+// 		swal("She persisted!", null, "success");	
+// 	}
+// 	else {
+// 		swal("hmm, try again", null, "error");
+// 	}
+// }
 
  
 //Pieces on info per questions:

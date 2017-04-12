@@ -13,7 +13,14 @@ button:hover {
 
 button {
 	color: #ff8c69;
+	font-family:'Fredericka the Great', cursive;
+	border-radius: 8px;
+    top: 50%;
+    width: 20%;
+    height: 30px;
+    margin: 15px;
 }
+
 
 .container {
   max-width: 600px;
@@ -37,4 +44,12 @@ li
 	list-style: none;
 	margin: 10px;
 	width: 400px;
+	font-family:'Fredericka the Great', cursive;
+}
+/*break-point*/
+
+@media (max-width: 640px) 
+{
+	
+	
 }
