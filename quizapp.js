@@ -28,14 +28,22 @@ var state = {//single source of truth/the braing of the operation
 			"Can't dance"
 		],
 		result: 1
-	}3],
+	}],
 	currentQuestion: 0, 
+	correctCounter: 0 
 }
 //Rendering
 
 //will need to make the question number dynamic. 
 var renderList = function(state) {
 	var question = state.items[state.currentQuestion]
+	if (question === undefined) {
+
+		return $('.questions').html(`
+			Congrats!  You got ${state.correctCounter} out of ${state.items.length} correct. 
+		`);
+
+	}
 	var name = question.name
 	var warnings = question.warnings
 	//item is always singular and index referring to which element with in the array
@@ -55,7 +63,16 @@ var renderList = function(state) {
 	});
 //add info to render to keep track of question
 	var html = `
-		<div>${printQuestion(name)}${itemsHtml.join("")}</div>
+		<div>
+			${printQuestion(name)}
+			${itemsHtml.join("")}
+		</div>
+		<div>
+			Correct answers: ${state.correctCounter} out of ${state.items.length}. 
+		</div>
+		<div>
+			Question: ${state.currentQuestion + 1} out of ${state.items.length}
+		</div>
 	`
 	$('.questions').html(html);
 }
@@ -71,6 +88,8 @@ $("body").on("click", "button.choice-item-toggle", function provideAnswer(event)
 
 	//if (2 == "2")
 	 if (state.items[state.currentQuestion].result == itemToCheck) {
+	 	state.correctCounter += 1
+
 	 	swal("She persisted!", null, "success");
 	 }
 	 else {
