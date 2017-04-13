@@ -7,9 +7,8 @@
 	//will contain variables inside the app.
 function printQuestion(name) {
 	return `
-		<h1><span class ="persisted">She was warned. 
-		She was given an explanation.</span> Nevertheless, she persisted.</h1>
-		${name} was warned. She was given an explanation. Nevertheless she persisted by:
+		<h1>${name} <span class ="persisted"> was warned. 
+		She was given an explanation.</span> Nevertheless, she persisted by:</h1>
 	`
 }
 
