@@ -7,12 +7,13 @@
 	//will contain variables inside the app.
 function printQuestion(name) {
 	return `
-		<h1></h1>
+		<h1><span class ="persisted">She was warned. 
+		She was given an explanation.</span> Nevertheless, she persisted.</h1>
 		${name} was warned. She was given an explanation. Nevertheless she persisted by:
 	`
 }
 
-var state = {//single source of truth/the braing of the operation 
+var state = {//single source of truth/the brain of the operation 
 	items: [{
 		name: "Rosa Parks", 
 		warnings: [
@@ -23,14 +24,24 @@ var state = {//single source of truth/the braing of the operation
 		],
 		result:2
 	}, {
-		name: "Katherine Johnson",
+		name: "Mary Jackson (human counter in the movie Hidden Figures)",
 		warnings:[
-			"Can't use the white bathroom",
-			"Can't become an engineer",
-			"Can't drive",
-			"Can't dance"
+			"Learning math",
+			"Wearing a dress",
+			"Driving over the speed limit",
+			"Petitioning a Judge so she could attend classes at the all-white Hampton Highschool"
 		],
-		result: 1
+		result: 3
+	},
+		{
+		name: "Malaya Yousafzai",
+		warnings:[
+			"Traveling with her family",
+			"Speaking in public",
+			"Speaking at the Unite Nations",
+			"Defying the Taliban and going to school"
+		],	
+		result: 3
 	}],
 	currentQuestion: 0, 
 	correctCounter: 0 
