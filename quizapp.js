@@ -6,7 +6,10 @@
 //Model
 	//will contain variables inside the app.
 function printQuestion(name) {
-	return name +  " was warned. She was given an explanation. Nevertheless she persisted by:"
+	return `
+		<h1></h1>
+		${name} was warned. She was given an explanation. Nevertheless she persisted by:
+	`
 }
 
 var state = {//single source of truth/the braing of the operation 
@@ -41,6 +44,10 @@ var renderList = function(state) {
 
 		return $('.questions').html(`
 			Congrats!  You got ${state.correctCounter} out of ${state.items.length} correct. 
+			<div>
+			<button class="end-button">Play Again!
+        	</button>
+        	</div>
 		`);
 
 	}
@@ -83,7 +90,6 @@ renderList(state)
 	//correct/incorrect response
 $("body").on("click", "button.choice-item-toggle", function provideAnswer(event){
 	var itemToCheck = $(event.currentTarget).closest("li").attr("index");
-	console.log(itemToCheck)
 	//checkAnswer(itemToCheck,2 )
 
 	//if (2 == "2")
@@ -93,11 +99,19 @@ $("body").on("click", "button.choice-item-toggle", function provideAnswer(event)
 	 	swal("She persisted!", null, "success");
 	 }
 	 else {
-	 	swal("hmm, try again", null, "error");
+	 	swal("hmm, that's not it", null, "error");
 	 }
 	 state.currentQuestion += 1
 	renderList(state)
 }); 
+
+$("body").on("click", ".end-button", function(){
+ 	state.currentQuestion = 0
+ 	state.correctCounter = 0
+ 	renderList(state)
+
+});
+
 
 // function checkAnswer(itemToCheck,result) {
 // 	console.log(itemToCheck)
@@ -116,4 +130,4 @@ $("body").on("click", "button.choice-item-toggle", function provideAnswer(event)
 	//2) multiple choice
 	//3) correct/incorrect response
 //quizz will load
-//question #1
+//question #1});
