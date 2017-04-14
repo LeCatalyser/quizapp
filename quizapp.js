@@ -121,23 +121,3 @@ $("body").on("click", ".end-button", function(){
  	renderList(state)
 
 });
-
-
-// function checkAnswer(itemToCheck,result) {
-// 	console.log(itemToCheck)
-// 	if (itemToCheck === result) {
-// 		counter++;
-// 		swal("She persisted!", null, "success");	
-// 	}
-// 	else {
-// 		swal("hmm, try again", null, "error");
-// 	}
-// }
-
- 
-//Pieces on info per questions:
-	//1)"name" '+' "warning:" 
-	//2) multiple choice
-	//3) correct/incorrect response
-//quizz will load
-//question #1});
